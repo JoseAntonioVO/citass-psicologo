@@ -47,6 +47,7 @@ public class CitaController {
 		return citaService.update(id, dto);	
 	}
 	
+	//Prueba de rama
 	@DeleteMapping("/delete/{id}")
 	public void delete(@PathVariable int id) {
 		citaService.delete(id);	
