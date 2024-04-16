@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  height: 100vh;
+}
+
+button.btn1 {
+  border-radius: 0.5rem;
+  color: white;
+  background-color: cornflowerblue;
+  border: none;
+  padding: 0.5rem;
+}
+
+button.btn2 {
+  border-radius: 0.5rem;
+  color: #212529;
+  background-color: white;
+  border: none;
+  padding: 0.5rem;
+}

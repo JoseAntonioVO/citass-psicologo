@@ -13,36 +13,36 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.soltel.psico.userPsico.dtos.CreateUserPsicoReqDTO;
-import com.soltel.psico.userPsico.dtos.CreateUserPsicoResDTO;
+import com.soltel.psico.userPsico.dtos.SaveUserPsicoReqDTO;
+import com.soltel.psico.userPsico.dtos.UserPsicoResDTO;
 import com.soltel.psico.userPsico.models.UserPsicoEntity;
 import com.soltel.psico.userPsico.service.UserPsicoService;
 
 @RestController
 @RequestMapping("/userPsico")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 public class UserPsicoController {
 	
 	@Autowired
 	private UserPsicoService userPsicoService;
 	
 	@GetMapping("/getAll") 
-	public List<UserPsicoEntity> getAll() {
+	public List<UserPsicoResDTO> getAll() {
 		return userPsicoService.getAll();
 	}
 	
 	@GetMapping("/getById/{id}")
-	public UserPsicoEntity getById(@PathVariable("id") int id) {
-		return userPsicoService.getById(id).get();
+	public UserPsicoResDTO getById(@PathVariable("id") int id) {
+		return userPsicoService.getById(id);
 	}
 	
 	@PostMapping("/create")
-	public UserPsicoEntity create(@RequestBody UserPsicoEntity userPsicoEntity) {
-		return userPsicoService.create(userPsicoEntity);
+	public UserPsicoResDTO create(@RequestBody SaveUserPsicoReqDTO dto) {
+		return userPsicoService.create(dto);
 	}
 	
 	@PutMapping("/update/{id}")
-	public CreateUserPsicoResDTO update(@PathVariable int id, @RequestBody CreateUserPsicoReqDTO dto ) {
+	public UserPsicoResDTO update(@PathVariable int id, @RequestBody SaveUserPsicoReqDTO dto ) {
 		return this.userPsicoService.update(id, dto);	
 	}
 	

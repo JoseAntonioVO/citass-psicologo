@@ -1,5 +1,6 @@
 package com.soltel.psico.cita.models;
 
+
 import com.soltel.psico.userPsico.models.UserPsicoEntity;
 
 import jakarta.persistence.Column;

@@ -1,0 +1,32 @@
+<!-- USER - INFO -->
+<h2>Información del Usuario</h2>
+<br />
+<div class="user-info">
+  <img src="assets/images/user.jpg" alt="Img User" />
+  <div>
+    <p><strong>Id:</strong> {{ user.id }}</p>
+    <p><strong>Nombre: </strong> {{ user.nombre }}</p>
+    <p><strong>Apellidos:</strong> {{ user.apellidos }}</p>
+  </div>
+  <div>
+    <p><strong>DNI:</strong> {{ user.dni }}</p>
+    <p><strong>Apellidos:</strong> {{ user.telefono }}</p>
+    <button class="btn1" [routerLink]="'/mis-citas'">Mis Citas</button>
+  </div>
+</div>
+
+<hr />
+
+<!-- CITAS -->
+<h2>Dias Disponibles</h2>
+<p>Seleccione un dia</p>
+<div class="days">
+  @for(day of days; track $index) {
+  <div class="day" [ngClass]="day.avaiable ? 'avaiable' : 'not-avaiable'">
+    <span><strong>Dia : </strong> {{ day.date | date }}</span>
+    @if(day.avaiable) {
+    <button class="btn2">Pedir Cita</button>
+    }
+  </div>
+  }
+</div>
