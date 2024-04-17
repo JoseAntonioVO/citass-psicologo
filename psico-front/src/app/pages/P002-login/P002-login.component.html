@@ -1,0 +1,19 @@
+<div class="form-container">
+  <form [formGroup]="loginForm">
+    <div class="control">
+      <label for="dni">DNI</label>
+      <input type="text" name="dni" id="dni" formControlName="dni" />
+    </div>
+    <div class="control">
+      <label for="password">Contraseña</label>
+      <input
+        type="password"
+        name="password"
+        id="password"
+        formControlName="password"
+      />
+    </div>
+
+    <button class="btn1" (click)="login()">Iniciar Sesion</button>
+  </form>
+</div>

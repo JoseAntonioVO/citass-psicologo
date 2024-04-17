@@ -1,0 +1,36 @@
+.user-info {
+  display: flex;
+  gap: 25%;
+}
+
+img {
+  height: 5rem;
+  border-radius: 50%;
+}
+
+.days {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 40rem;
+  overflow: scroll;
+}
+.day {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0.5rem;
+  min-height: 5rem;
+  padding: 1rem;
+  background-color: gainsboro;
+}
+
+.avaiable {
+  color: white;
+  background-color: mediumseagreen;
+}
+
+.not-avaiable {
+  color: white;
+  background-color: tomato;
+}

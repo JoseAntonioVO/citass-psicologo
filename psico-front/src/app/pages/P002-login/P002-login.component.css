@@ -1,0 +1,23 @@
+div {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 50%;
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  width: 100%;
+}
+
+.control > * {
+  width: 100%;
+}
