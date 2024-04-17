@@ -35,6 +35,11 @@ public class UserPsicoController {
 	public UserPsicoResDTO getById(@PathVariable("id") int id) {
 		return userPsicoService.getById(id);
 	}
+
+	@GetMapping("/getByDNI/{dni}")
+	public UserPsicoResDTO getById(@PathVariable("dni") String dni) {
+		return userPsicoService.getByDNI(dni);
+	}
 	
 	@PostMapping("/create")
 	public UserPsicoResDTO create(@RequestBody SaveUserPsicoReqDTO dto) {

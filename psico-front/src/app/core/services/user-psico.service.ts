@@ -29,6 +29,10 @@ export class UserPsicoService {
     return this.http.get<UserPsicoResDTO>(`${this.apiUrl}/getById/${id}`);
   }
 
+  getByLogin(dni: string) {
+    return this.http.get<UserPsicoResDTO>(`${this.apiUrl}/getByDNI/${dni}`);
+  }
+
   create(dto: SaveUserPsicoReqDTO) {
     return this.http.post<UserPsicoResDTO>(`${this.apiUrl}/create`, dto);
   }

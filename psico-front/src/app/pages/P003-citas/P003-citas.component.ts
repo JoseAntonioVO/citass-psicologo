@@ -1,8 +1,9 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { UserPsicoResDTO } from '../../core/shared/models/user-psico/user-psico-res.dto';
 import { UserPsicoService } from '../../core/services/user-psico.service';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router, RouterLink, RouterState } from '@angular/router';
 import { DatePipe, NgClass } from '@angular/common';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-P003-citas',
@@ -13,12 +14,12 @@ import { DatePipe, NgClass } from '@angular/common';
 })
 export class P003CitasComponent implements OnInit {
   user: UserPsicoResDTO = {
-    id: 1,
-    nombre: 'Juan',
-    apellidos: 'Pérez',
-    telefono: 654321000,
-    dni: '123456789A',
-    contrasena: '1234',
+    id: 0,
+    nombre: '',
+    apellidos: '',
+    telefono: 0,
+    dni: '',
+    contrasena: '',
   };
 
   days: { date: Date; avaiable: boolean }[] = [
@@ -33,15 +34,31 @@ export class P003CitasComponent implements OnInit {
   ];
 
   userPsicoService = inject(UserPsicoService);
-  constructor() {}
+  constructor(private route: ActivatedRoute, private router: Router) {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      this.getUserFromNavigation();
+    });
+  }
 
   ngOnInit() {
     this.getDaysOfMonth(3);
-    this.userPsicoService.getById(1).subscribe((data) => {
-      console.log("Mirar este dato " + data);
+
+    this.getUserFromNavigation();
+    
+    /*this.userPsicoService.getById(this.receivedData).subscribe((data) => {
       this.user = data
-    });
+    });*/
   }
+
+  private getUserFromNavigation() {
+    const navigation = this.router.getCurrentNavigation();
+    if (navigation && navigation.extras && navigation.extras.state) {
+      this.user = navigation.extras.state['data'];
+    }
+  }
+  
 
   private getDaysOfMonth(month: number) {
     // Asegurarse de que el mes es válido (1-12)

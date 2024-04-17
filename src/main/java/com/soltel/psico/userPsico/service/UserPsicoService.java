@@ -27,6 +27,10 @@ public class UserPsicoService {
 		return UserPsicoMapper.entityToDTO(this.userPsicoRespository.findById(id).get()) ;
 	}
 
+	public UserPsicoResDTO getByDNI(String dni) {
+		return UserPsicoMapper.entityToDTO(this.userPsicoRespository.findByDni(dni)) ;
+	}
+
 	public UserPsicoResDTO create(SaveUserPsicoReqDTO dto) {
 		UserPsicoEntity userPsico = UserPsicoMapper.DTOtoEntity(dto);;
 		UserPsicoEntity editedUserPsico = this.userPsicoRespository.save(userPsico);

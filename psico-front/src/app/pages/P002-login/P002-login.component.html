@@ -1,19 +1,39 @@
-<div class="form-container">
-  <form [formGroup]="loginForm">
-    <div class="control">
-      <label for="dni">DNI</label>
-      <input type="text" name="dni" id="dni" formControlName="dni" />
+<div class="login-container" [ngClass]="{ 'transparent-bg': loading }">
+  <form [formGroup]="loginForm" class="custom-form">
+    <h1 class="text-white">Iniciar sesion</h1>
+    <input
+      type="text"
+      formControlName="dni"
+      name="dni"
+      placeholder="Inserte DNI"
+      required
+    />
+    <div *ngIf="loginForm.get('dni')required">
     </div>
-    <div class="control">
-      <label for="password">Contraseña</label>
-      <input
-        type="password"
-        name="password"
-        id="password"
-        formControlName="password"
-      />
+    <input
+      type="password"
+      formControlName="password"
+      name="password"
+      placeholder="Inserte Contraseña"
+      required
+    />
+    <div *ngIf="loginForm.get('password')required">
     </div>
-
-    <button class="btn1" (click)="login()">Iniciar Sesion</button>
+    <button type="submit" (click)="login()">Acceder</button>
   </form>
+  <br>
+
+  <!-- Spinner de carga -->
+  <div *ngIf="loading" class="spinner-container">
+    <div class="spinner-border  text-primary" role="status">
+    </div>
+  <!-- Mensajes de error -->
+    <section *ngIf="mensaje" class="alert alert-success">
+      {{ mensaje }}
+    </section>
+  </div>
+  <br><br>
+</div>
+<div *ngIf="error" class="alert alert-danger text-center">
+  {{ mensaje }}
 </div>
